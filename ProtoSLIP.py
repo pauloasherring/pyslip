@@ -59,7 +59,11 @@ def getSerialByte(serialFD):
         #fetch a new data chunk from the serial port       
         i = 0
         while len(readBufferQueue) < MAX_MTU:
-            newByte = ord(serialFD.read())
+            bb = serialFD.read()           
+            if len(bb) == 0:
+				return None
+            #print (bb)
+            newByte = ord(bb)
             readBufferQueue.append(newByte)
         newByte = readBufferQueue.popleft()
         return newByte

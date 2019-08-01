@@ -4,8 +4,9 @@ import serial
 
 # This function connect and configure the serial port. Then returns the file discripter  
 def connectToSerialPort():
-    port = '/dev/ttyACM0'
-    serialFD = serial.Serial(port=port, baudrate=115200, bytesize=8, parity='N', stopbits=1, xonxoff=False, rtscts=False)
+    port = '/dev/ttyS2'
+    print ('Connecting to ' + port)
+    serialFD = serial.Serial(port=port, baudrate=115200, bytesize=8, parity='N', stopbits=1, xonxoff=False, rtscts=False, timeout=0)
     # port='/dev/ttyUSB0'- port to open  
     # baudrate=115200  - baud rate to communicate with the port  
     # bytesize=8           - size of a byte  
